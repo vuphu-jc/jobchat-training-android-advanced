@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 class SuperHeroRecyclerViewAdapter
     (private val data: MutableList<SuperHero>, private val context: Context, private val type: Int):
@@ -21,6 +24,11 @@ class SuperHeroRecyclerViewAdapter
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
+        when (type) {
+            LayoutManagerType.LINEAR -> recyclerView.layoutManager = LinearLayoutManager(context)
+            LayoutManagerType.GRID -> recyclerView.layoutManager = GridLayoutManager(context, 2)
+            LayoutManagerType.STAGGERED_GRID -> recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
