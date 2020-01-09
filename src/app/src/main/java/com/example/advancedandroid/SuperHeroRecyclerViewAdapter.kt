@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 class SuperHeroRecyclerViewAdapter
-    (private val data: MutableList<SuperHero>, private val context: Context, private val type: Int):
+    (private val data: MutableList<SuperHero>, private val context: Context, private val type: SuperHeroRecyclerViewAdapter.LayoutManagerType):
             RecyclerView.Adapter<SuperHeroRecyclerViewAdapter.ViewHolder>() {
 
-    companion object LayoutManagerType {
-        const val LINEAR: Int = 1
-        const val GRID: Int = 2
-        const val STAGGERED_GRID: Int = 3
+    enum class LayoutManagerType(val type: Int) {
+        LINEAR(1),
+        GRID(2),
+        STAGGERED_GRID(3)
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {

@@ -1,4 +1,8 @@
 package com.example.advancedandroid
 
-data class SuperHero(val name: String, val landscapeImageUri: String, val portraitImageUri: String) {
-}
+import com.google.gson.annotations.SerializedName
+
+data class SuperHero(
+    @SerializedName("name") val name: String,
+    @SerializedName("landscapeImageUri") val landscapeImageUri: String,
+    @SerializedName("portraitImageUri") val portraitImageUri: String) {}

@@ -2,4 +2,5 @@
 <resources>
     <dimen name="hero_name_text_size">20sp</dimen>
     <dimen name="hero_image_height">250dp</dimen>
+    <dimen name="cardview_corner_radius">10dp</dimen>
 </resources>

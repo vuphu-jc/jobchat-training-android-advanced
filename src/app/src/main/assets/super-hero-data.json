@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Ant Man",
+    "landscapeImageUri": "assets/landscape/ant-man.jpg",
+    "portraitImageUri": "assets/portrait/ant-man.jpg"
+  },
+  {
+    "name": "Black Panther",
+    "landscapeImageUri": "assets/landscape/black-panther.jpg",
+    "portraitImageUri": "assets/portrait/black-panther.jpg"
+  },
+  {
+    "name": "Black Window",
+    "landscapeImageUri": "assets/landscape/black-window.jpg",
+    "portraitImageUri": "assets/portrait/black-window.jpg"
+  },
+  {
+    "name": "Captain American",
+    "landscapeImageUri": "assets/landscape/captain-american.jpg",
+    "portraitImageUri": "assets/portrait/captain-american.jpg"
+  },
+  {
+    "name": "Captain Marvel",
+    "landscapeImageUri": "assets/landscape/captain-marvel.jpg",
+    "portraitImageUri": "assets/portrait/captain-marvel.jpg"
+  },
+  {
+    "name": "Doctor Strange",
+    "landscapeImageUri": "assets/landscape/doctor-strange.jpg",
+    "portraitImageUri": "assets/portrait/doctor-strange.jpg"
+  },
+  {
+    "name": "Falcon",
+    "landscapeImageUri": "assets/landscape/falcon.jpg",
+    "portraitImageUri": "assets/portrait/falcon.jpg"
+  },
+  {
+    "name": "Hawkeye",
+    "landscapeImageUri": "assets/landscape/hawkeye.jpg",
+    "portraitImageUri": "assets/portrait/hawkeye.jpg"
+  },
+  {
+    "name": "Hulk",
+    "landscapeImageUri": "assets/landscape/hulk.jpg",
+    "portraitImageUri": "assets/portrait/hulk.jpg"
+  },
+  {
+    "name": "Iron Man",
+    "landscapeImageUri": "assets/landscape/iron-man.jpg",
+    "portraitImageUri": "assets/portrait/iron-man.jpg"
+  },
+  {
+    "name": "Quick Silver",
+    "landscapeImageUri": "assets/landscape/quicksilver.jpg",
+    "portraitImageUri": "assets/portrait/quicksilver.jpg"
+  },
+  {
+    "name": "Scarlet Witch",
+    "landscapeImageUri": "assets/landscape/scarlet-witch.jpg",
+    "portraitImageUri": "assets/portrait/scarlet-witch.jpg"
+  },
+  {
+    "name": "Spider Man",
+    "landscapeImageUri": "assets/landscape/spider-man.jpg",
+    "portraitImageUri": "assets/portrait/spider-man.jpg"
+  },
+  {
+    "name": "Thor",
+    "landscapeImageUri": "assets/landscape/thor.jpg",
+    "portraitImageUri": "assets/portrait/thor.jpg"
+  },
+  {
+    "name": "War Machine",
+    "landscapeImageUri": "assets/landscape/war-machine.jpg",
+    "portraitImageUri": "assets/portrait/war-machine.jpg"
+  },
+  {
+    "name": "Vision",
+    "landscapeImageUri": "assets/landscape/vision.jpg",
+    "portraitImageUri": "assets/portrait/vision.jpg"
+  }
+]

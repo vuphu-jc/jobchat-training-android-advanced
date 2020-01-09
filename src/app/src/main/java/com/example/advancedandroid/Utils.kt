@@ -4,9 +4,10 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.AsyncTask
 import android.widget.ImageView
-import java.io.IOException
+import java.io.BufferedReader
 import java.io.InputStream
-import java.lang.Exception
+import java.io.InputStreamReader
+import java.net.FileNameMap
 
 
 object Utils {
@@ -32,5 +33,10 @@ object Utils {
     fun setSourceForImageView(context: Context, imageView: ImageView, assetsUri: String) {
         val asyncTask = LoadImageFromAssets(context, imageView)
         asyncTask.execute(assetsUri)
+    }
+
+    fun getTextFromRaw(context: Context, fileName: String) : String? {
+        val ins: InputStream = context.assets.open(fileName)
+        return BufferedReader(InputStreamReader(ins)).readText()
     }
 }
