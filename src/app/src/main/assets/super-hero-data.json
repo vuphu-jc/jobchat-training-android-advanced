@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Ant Man",
+    "imageUri": "image/ant-man.jpg",
+    "description": "Overcoming his criminal past, Scott Lang follows in the tiny, yet mighty, footsteps of his predecessor as the size-changing hero known as Ant-Man!",
+    "url": "https://www.marvel.com/characters/ant-man-scott-lang"
+  },
+  {
+    "name": "Black Panther",
+    "imageUri": "image/black-panther.jpg",
+    "description": "T’Challa is the king of the secretive and highly advanced African nation of Wakanda - as well as the powerful warrior known as the Black Panther.",
+    "url": "https://www.marvel.com/characters/black-panther-t-challa"
+  },
+  {
+    "name": "Black Window",
+    "imageUri": "image/black-window.jpg",
+    "description": "Despite super spy Natasha Romanoff’s checkered past, she’s become one of S.H.I.E.L.D.’s most deadly assassins and a frequent member of the Avengers.",
+    "url": "https://www.marvel.com/characters/black-widow-natasha-romanoff"
+  },
+  {
+    "name": "Captain America",
+    "imageUri": "image/captain-america.jpg",
+    "description": "Recipient of the Super-Soldier serum, World War II hero Steve Rogers fights for American ideals as one of the world’s mightiest heroes and the leader of the Avengers.",
+    "url": "https://www.marvel.com/characters/captain-america-steve-rogers"
+  },
+  {
+    "name": "Captain Marvel",
+    "imageUri": "image/captain-marvel.jpg",
+    "description": "Carol Danvers becomes one of the universe's most powerful heroes when Earth is caught in the middle of a galactic war between two alien races.",
+    "url": "https://www.marvel.com/characters/captain-marvel-carol-danvers"
+  },
+  {
+    "name": "Doctor Strange",
+    "imageUri": "image/doctor-strange.jpg",
+    "description": "Formerly a renowned surgeon, Doctor Stephen Strange now serves as the Sorcerer Supreme—Earth’s foremost protector against magical and mystical threats.",
+    "url": "https://www.marvel.com/characters/doctor-strange-stephen-strange"
+  },
+  {
+    "name": "Falcon",
+    "imageUri": "image/falcon.jpg",
+    "description": "Set with his signature mechanical wings, Sam Wilson teams up as an Avenger alongside his longtime partner Captain America.",
+    "url": "https://www.marvel.com/characters/falcon-sam-wilson"
+  },
+  {
+    "name": "Hawkeye",
+    "imageUri": "image/hawkeye.jpg",
+    "description": "A master marksman and longtime friend of Black Widow, Clint Barton serves as the Avengers’ amazing archer.",
+    "url": "https://www.marvel.com/characters/hawkeye-clint-barton"
+  },
+  {
+    "name": "Hulk",
+    "imageUri": "image/hulk.jpg",
+    "description": "Dr. Bruce Banner lives a life caught between the soft-spoken scientist he’s always been and the uncontrollable green monster powered by his rage.",
+    "url": "https://www.marvel.com/characters/hulk-bruce-banner"
+  },
+  {
+    "name": "Iron Man",
+    "imageUri": "image/iron-man.jpg",
+    "description": "Genius. Billionaire. Playboy. Philanthropist. Tony Stark's confidence is only matched by his high-flying abilities as the hero called Iron Man.",
+    "url": "https://www.marvel.com/characters/iron-man-tony-stark"
+  },
+  {
+    "name": "Quick Silver",
+    "imageUri": "image/quicksilver.jpg",
+    "description": "With the ability to run at the speed of sound, Piertro Maximoff is always racing to uncover his past and the road to the future.",
+    "url": "https://www.marvel.com/characters/quicksilver"
+  },
+  {
+    "name": "Scarlet Witch",
+    "imageUri": "image/scarlet-witch.jpg",
+    "description": "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
+    "url": "https://www.marvel.com/characters/scarlet-witch-wanda-maximoff"
+  },
+  {
+    "name": "Spider Man",
+    "imageUri": "image/spider-man.jpg",
+    "description": "Bitten by a radioactive spider, Peter Parker’s arachnid abilities give him amazing powers he uses to help others, while his personal life continues to offer plenty of obstacles.",
+    "url": "https://www.marvel.com/characters/spider-man-peter-parker"
+  },
+  {
+    "name": "Thor",
+    "imageUri": "image/thor.jpg",
+    "description": "The son of Odin uses his mighty abilities as the God of Thunder to protect his home Asgard and planet Earth alike.",
+    "url": "https://www.marvel.com/characters/thor-thor-odinson"
+  },
+  {
+    "name": "War Machine",
+    "imageUri": "image/war-machine.jpg",
+    "description": "Military veteran James Rhodes is ready for combat in his advanced armor, adding a formidable arsenal to Tony Stark-created designs.",
+    "url": "https://www.marvel.com/characters/war-machine-james-rhodes"
+  },
+  {
+    "name": "Vision",
+    "imageUri": "image/vision.jpg",
+    "description": "The android called Vision defies physics and fights as an Avenger with the power of density manipulation and his flawless computer brain.",
+    "url": "https://www.marvel.com/characters/vision"
+  }
+]
