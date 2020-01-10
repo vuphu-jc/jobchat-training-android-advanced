@@ -27,21 +27,5 @@ class MainActivity : AppCompatActivity() {
                     tvCurrent.text = curr
                     tvNext.text = next
         }
-//        btnAddPadding.setOnClickListener {
-//            var start = 0
-//            var finish = 100
-//            if (view_pager.paddingLeft > 0) {
-//                start = 100
-//                finish = 0
-//            }
-//
-//            val valueAnimator = ValueAnimator.ofInt(start, finish)
-//            valueAnimator.duration = 500
-//            valueAnimator.addUpdateListener {
-//                val value = it.animatedValue as Int
-//                view_pager.setPadding(value, 0, value, value)
-//            }
-//            valueAnimator.start()
-//        }
     }
 }
