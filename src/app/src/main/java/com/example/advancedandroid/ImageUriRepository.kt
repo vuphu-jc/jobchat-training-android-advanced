@@ -32,6 +32,7 @@ class DeviceImageUriRepository(private val context: Context) : ImageUriRepositor
             val path= cursor.getString(columnIndexData)
             result.add(path)
         }
+        result.reverse()
         return result
     }
 }
