@@ -17,11 +17,7 @@ class ImageRecyclerViewAdapter(private val context: Context, private val data: M
     private var mSpanCount: Int = 1
     private var mDisplayMetrics = Utils.getDisplayMetrics(context as Activity)
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView = itemView.findViewById<ImageView>(R.id.imgImage)
-    }
-
-    fun addData(data: MutableList<String>) {
+    fun addData(data: List<String>) {
         this.data.addAll(data)
         notifyItemRangeChanged(this.data.size - data.size, data.size)
     }
@@ -41,11 +37,18 @@ class ImageRecyclerViewAdapter(private val context: Context, private val data: M
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val size = mDisplayMetrics.widthPixels / mSpanCount
-        val params = LinearLayout.LayoutParams(size, size)
-        holder.imageView.layoutParams = params
-        holder.imageView.setImageBitmap(null)
-        //Glide.with(context).load(data[position]).into(holder.imageView)
-        Utils.ImageLoader.from(context).load(data[position], holder.imageView)
+        holder.bind(data[position])
+    }
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imageView = itemView.findViewById<ImageView>(R.id.imgImage)
+
+        fun bind(uri: String) {
+            val size = mDisplayMetrics.widthPixels / mSpanCount
+            val params = LinearLayout.LayoutParams(size, size)
+            imageView.layoutParams = params
+            imageView.setImageBitmap(null)
+            Utils.ImageLoader.from(context).load(data[position], imageView)
+        }
     }
 }

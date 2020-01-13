@@ -1,10 +1,8 @@
 package com.example.advancedandroid
 
 import android.content.pm.PackageManager
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -29,17 +27,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkPermission() {
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-            ActivityCompat.requestPermissions(this,
-                arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE),
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ),
                 ACCESS_EXTERNAL_STORAGE_REQUEST_CODE
             )
+        }
         else
-            load()
+            initialize()
     }
 
-    private fun load() {
+    private fun initialize() {
         repository = DeviceImageUriRepository(this)
         rvImages = findViewById(R.id.rvImages)
         rvImages.layoutManager = GridLayoutManager(this, SPAN_COUNT)
@@ -55,9 +56,8 @@ class MainActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == ACCESS_EXTERNAL_STORAGE_REQUEST_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                load()
-        }
+        if (requestCode == ACCESS_EXTERNAL_STORAGE_REQUEST_CODE
+            && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                initialize()
     }
 }
