@@ -45,7 +45,7 @@ class ImageRecyclerViewAdapter(private val context: Context, private val data: M
         val params = LinearLayout.LayoutParams(size, size)
         holder.imageView.layoutParams = params
         holder.imageView.setImageBitmap(null)
-        Glide.with(context).load(data[position]).into(holder.imageView)
+        //Glide.with(context).load(data[position]).into(holder.imageView)
         Utils.ImageLoader.from(context).load(data[position], holder.imageView)
     }
 }

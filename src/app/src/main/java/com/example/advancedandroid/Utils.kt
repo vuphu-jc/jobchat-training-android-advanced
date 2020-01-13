@@ -31,21 +31,21 @@ object Utils {
         private lateinit var mContext: Context
 
         fun load(uri: String, imageView: ImageView) {
-            if (sCache[uri] != null)
-                imageView.setImageBitmap(sCache[uri])
-            else
-                LoadImageFromUri(imageView).execute(uri)
+            LoadImageFromUri(uri, imageView).execute(uri)
         }
 
-        inner class LoadImageFromUri(val imageView: ImageView)
-            : AsyncTask<String,Unit,Bitmap>(){
-            override fun doInBackground(vararg params: String?): Bitmap {
+        inner class LoadImageFromUri(private val uri: String, private val imageView: ImageView)
+            : AsyncTask<String,Unit,Unit>(){
+            override fun doInBackground(vararg params: String?) {
+                if (sCache.containsKey(uri)) return
                 val uri = params[0] as String
-                return BitmapFactory.decodeFile(uri)
+                sCache.put(uri, BitmapFactory.decodeFile(uri))
+                return
             }
 
-            override fun onPostExecute(result: Bitmap?) {
-                imageView.setImageBitmap(result)
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                imageView.setImageBitmap(sCache[uri])
             }
         }
     }
