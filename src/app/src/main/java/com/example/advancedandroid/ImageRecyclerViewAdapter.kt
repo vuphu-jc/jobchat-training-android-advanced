@@ -2,9 +2,6 @@ package com.example.advancedandroid
 
 import android.app.Activity
 import android.content.Context
-import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,8 +14,8 @@ import com.bumptech.glide.Glide
 class ImageRecyclerViewAdapter(private val context: Context, private val data: MutableList<String>)
     : RecyclerView.Adapter<ImageRecyclerViewAdapter.ViewHolder>() {
 
-    private var spanCount: Int = 1
-    private var displayMetrics = Utils.getDisplayMetrics(context as Activity)
+    private var mSpanCount: Int = 1
+    private var mDisplayMetrics = Utils.getDisplayMetrics(context as Activity)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView = itemView.findViewById<ImageView>(R.id.imgImage)
@@ -30,7 +27,7 @@ class ImageRecyclerViewAdapter(private val context: Context, private val data: M
     }
 
     fun setSpanCount(spanCount: Int) {
-        this.spanCount = spanCount
+        this.mSpanCount = spanCount
         notifyDataSetChanged()
     }
 
@@ -44,10 +41,11 @@ class ImageRecyclerViewAdapter(private val context: Context, private val data: M
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val size = displayMetrics.widthPixels / spanCount
+        val size = mDisplayMetrics.widthPixels / mSpanCount
         val params = LinearLayout.LayoutParams(size, size)
         holder.imageView.layoutParams = params
-        Glide.with(context).load(data[position])
-            .into(holder.imageView);
+        holder.imageView.setImageBitmap(null)
+        Glide.with(context).load(data[position]).into(holder.imageView)
+        Utils.ImageLoader.from(context).load(data[position], holder.imageView)
     }
 }
