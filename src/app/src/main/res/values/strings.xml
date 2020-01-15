@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AdvancedAndroid</string>
+    <string name="activity_main_play_text_view">PLAY</string>
+    <string name="activity_main_list_text_view">DANH SÁCH</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

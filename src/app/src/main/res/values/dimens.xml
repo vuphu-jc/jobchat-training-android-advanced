@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="item_song_image_size">65dp</dimen>
+    <dimen name="item_song_name_size">30dp</dimen>
+    <dimen name="item_song_name_text_size">20sp</dimen>
+    <dimen name="item_song_author_size">25dp</dimen>
+    <dimen name="item_song_author_text_size">15sp</dimen>
+    <dimen name="item_song_card_corner_radius">3dp</dimen>
+    <dimen name="item_song_add_playlist_width">30dp</dimen>
+    <dimen name="item_song_add_playlist_height">30dp</dimen>
+
+    <dimen name="activity_main_text_view_width">250dp</dimen>
+    <dimen name="activity_main_text_view_height">80dp</dimen>
+    <dimen name="activity_main_text_view_text_size">22sp</dimen>
+
+    <dimen name="fragment_play_image_size">60dp</dimen>
+    <dimen name="fragment_play_name_size">20dp</dimen>
+    <dimen name="fragment_play_name_text_size">16sp</dimen>
+    <dimen name="fragment_play_author_size">18dp</dimen>
+    <dimen name="fragment_play_author_text_size">15sp</dimen>
+    <dimen name="fragment_play_card_corner_radius">10dp</dimen>
+    <dimen name="fragment_play_button_width">40dp</dimen>
+    <dimen name="fragment_play_button_height">35dp</dimen>
+
+    <dimen name="expanded_notification_height">140dp</dimen>
+    <dimen name="expanded_notification_icon_size">40dp</dimen>
+    <dimen name="expanded_notification_icon_small_size">30dp</dimen>
+    <dimen name="notification_name_text_size">18sp</dimen>
+</resources>
