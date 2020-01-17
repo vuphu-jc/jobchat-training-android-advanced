@@ -6,13 +6,19 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.support.v4.media.session.MediaSessionCompat
 import androidx.core.app.NotificationCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.example.advancedandroid.R
-import com.example.advancedandroid.Utils
 import com.example.advancedandroid.model.Song
 import com.example.advancedandroid.ui.MainActivity
+import com.example.advancedandroid.utils.AsyncTaskUtils
+import com.example.advancedandroid.utils.SongImageUtils
 
 
 class CustomNotification(private val context: Context) {
@@ -35,7 +41,6 @@ class CustomNotification(private val context: Context) {
     }
 
     private lateinit var mBaseBuilder: NotificationCompat.Builder
-    private lateinit var mSong: Song
     private var isLoadedImage = false
     init {
         createBaseNotification()
@@ -73,7 +78,6 @@ class CustomNotification(private val context: Context) {
         mBaseBuilder
             .setContentTitle(song.name)
             .setContentText(song.artist)
-        mSong = song
         isLoadedImage = false
         return this
     }
@@ -122,11 +126,14 @@ class CustomNotification(private val context: Context) {
         if (isLoadedImage)
             callback.invoke(mBaseBuilder.build())
         else {
-            Utils.LoadImageFromSong {
-                mBaseBuilder.setLargeIcon(it)
-                isLoadedImage = true
-                callback.invoke(mBaseBuilder.build())
-            }.execute(mSong.uri)
+            val song = SoundManager.currentSong.value
+            if (song != null) {
+                SongImageUtils.getSongImageWithCallback(context, song) {
+                    mBaseBuilder.setLargeIcon(it)
+                    isLoadedImage = true
+                    callback.invoke(mBaseBuilder.build())
+                }
+            }
         }
     }
 

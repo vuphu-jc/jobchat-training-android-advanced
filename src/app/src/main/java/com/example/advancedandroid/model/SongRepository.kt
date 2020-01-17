@@ -1,44 +1,69 @@
 package com.example.advancedandroid.model
 
-import android.media.MediaMetadataRetriever
-import com.example.advancedandroid.Utils
+import android.content.Context
+import com.example.advancedandroid.other.crawler.ListSongCrawler
+import com.example.advancedandroid.other.crawler.NhacCuaTuiCrawler
+import com.example.advancedandroid.other.crawler.NhacVNCrawler
 
 
 interface SongRepository {
     fun getAll() : List<Song>
+    fun insert(song: Song): Long
+    fun findByName(name: String, limit: Int = 3): List<Song>
 }
 
-class DeviceSongRepository: SongRepository {
-
-    companion object {
-        private const val FILE_TYPE: String = ".mp3"
-        private const val ZING_MP3_PATH: String = "/storage/emulated/0/Zing MP3/"
-        private const val UNKNOWN: String = "Unknown"
+class DeviceSongRepository(private val context: Context): SongRepository {
+    override fun getAll(): List<Song> {
+        return SongRoomDatabase.getDatabase(context)
+            .SongRoomDAO().selectAll()
     }
 
-    private fun MediaMetadataRetriever.get(keyCode: Int): String {
-        var value = this.extractMetadata(keyCode)
-        if (value == null) value =
-            UNKNOWN
-        return value
+    override fun insert(song: Song): Long {
+        return SongRoomDatabase.getDatabase(context)
+            .SongRoomDAO().insert(song)
     }
-    
-    private fun MediaMetadataRetriever.fillData(uri: String): Song {
-        setDataSource(uri)
-        val name = get(MediaMetadataRetriever.METADATA_KEY_TITLE)
-        val artist = get(MediaMetadataRetriever.METADATA_KEY_ARTIST)
-        
-        return Song(name, artist, uri)
+
+    override fun findByName(name: String, limit: Int): List<Song> {
+        return SongRoomDatabase.getDatabase(context)
+            .SongRoomDAO().findByName(name, limit)
+    }
+}
+
+class OnlineSongRepository(): SongRepository {
+    val mCrawlers = mutableListOf<ListSongCrawler>()
+
+    init {
+        mCrawlers.add(NhacCuaTuiCrawler.ListSong())
+        mCrawlers.add(NhacVNCrawler.ListSong())
     }
 
     override fun getAll(): List<Song> {
-        var allPath = Utils.getAllFiles(
-            FILE_TYPE,
-            ZING_MP3_PATH
-        )
+        return mutableListOf()
+    }
+
+    override fun insert(song: Song): Long {
+        return -1
+    }
+
+    override fun findByName(name: String, limit: Int): List<Song> {
         val result = mutableListOf<Song>()
-        for (uri in allPath)
-            result.add(MediaMetadataRetriever().fillData(uri))
+        val subResult = mutableListOf<MutableList<Song>>()
+
+        var maxItem = 0
+        for (crawler in mCrawlers) {
+            subResult.add(crawler.search(name, limit / mCrawlers.size + 1).toMutableList())
+            maxItem = Math.max(maxItem, subResult.last().size)
+        }
+
+        for (i in 0 until maxItem) {
+            for (sub in subResult) {
+                if (i < sub.size) {
+                    result.add(sub[i])
+                }
+            }
+        }
+
         return result
     }
+
 }

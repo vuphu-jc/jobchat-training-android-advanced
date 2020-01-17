@@ -4,16 +4,10 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.media.MediaPlayer
-import android.media.session.PlaybackState
 import android.os.IBinder
-import android.os.SystemClock
-import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
-import android.support.v4.media.session.PlaybackStateCompat
-import android.util.Log
-import com.example.advancedandroid.Utils
 import com.example.advancedandroid.model.Song
+import java.lang.Exception
 
 
 class ForegroundSoundService: Service() {
@@ -37,16 +31,13 @@ class ForegroundSoundService: Service() {
             context.stopService(intent)
         }
 
-        fun start(context: Context, song: Song) {
+        fun start(context: Context) {
             val intent = Intent(context, ForegroundSoundService::class.java)
             intent.action = ACTION_PLAY
-            intent.putExtra(SONG, song)
             context.startService(intent)
         }
     }
 
-    private lateinit var mMediaPlayerManager: MediaPlayerManager
-    private lateinit var mSong: Song
     private lateinit var mBroadcastReceiver: ForegroundSoundBroadcastReceiver
     private lateinit var mMediaSessionCompat: MediaSessionCompat
     private lateinit var mCustomNotification: CustomNotification
@@ -58,14 +49,13 @@ class ForegroundSoundService: Service() {
     override fun onCreate() {
         super.onCreate()
         initializeBroadcastReceiver()
-        mMediaPlayerManager = MediaPlayerManager()
         mCustomNotification = CustomNotification(baseContext)
         mMediaSessionCompat = MediaSessionCompat(baseContext, MEDIA_SESSION_TAG).apply {
             isActive = true
             setCallback(object: MediaSessionCompat.Callback() {
                 override fun onSeekTo(pos: Long) {
                     super.onSeekTo(pos)
-                    mMediaPlayerManager.seekTo(pos)
+                    MediaPlayerManager.seekTo(pos)
                     rebuildNotification()
                 }
             })
@@ -84,26 +74,27 @@ class ForegroundSoundService: Service() {
 
 
     private fun onStart() {
-        mMediaPlayerManager.start(mSong.uri)
-        mMediaSessionCompat.setMetadata(mMediaPlayerManager.getMetadata())
-
-        mCustomNotification.pauseNotification()
-        rebuildNotification()
+        val song = SoundManager.currentSong.value
+        if (song != null && MediaPlayerManager.start(song)) {
+            mCustomNotification.pauseNotification()
+            mCustomNotification.applyMetadata(song)
+            rebuildNotification()
+        }
     }
 
     private fun onPauseOrReplay() {
-        if (mMediaPlayerManager.isPlaying()) {
-            mMediaPlayerManager.pause()
+        if (MediaPlayerManager.isPlaying()) {
+            MediaPlayerManager.pause()
             mCustomNotification.replayNotification()
         } else {
-            mMediaPlayerManager.replay()
+            MediaPlayerManager.replay()
             mCustomNotification.pauseNotification()
         }
         rebuildNotification()
     }
 
     private fun rebuildNotification() {
-        mMediaSessionCompat.setPlaybackState(mMediaPlayerManager.getPlaybackState())
+        mMediaSessionCompat.setPlaybackState(MediaPlayerManager.getPlaybackState())
         mCustomNotification.applyMediaSession(mMediaSessionCompat)
         mCustomNotification.build {
             startForeground(NOTIFICATION_ID, it)
@@ -112,8 +103,6 @@ class ForegroundSoundService: Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         if (intent?.action == ACTION_PLAY) {
-            mSong = intent.getParcelableExtra(SONG)
-            mCustomNotification.applyMetadata(mSong)
             onStart()
         } else if (intent?.action == ACTION_PAUSE_REPLAY)
             onPauseOrReplay()
@@ -122,7 +111,7 @@ class ForegroundSoundService: Service() {
     }
 
     override fun onDestroy() {
-        mMediaPlayerManager.stop()
+        MediaPlayerManager.stop()
         unregisterReceiver(mBroadcastReceiver)
     }
 }

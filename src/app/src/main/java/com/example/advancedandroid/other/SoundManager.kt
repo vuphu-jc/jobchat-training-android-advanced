@@ -1,15 +1,24 @@
 package com.example.advancedandroid.other
 
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import com.example.advancedandroid.model.Song
 
 object SoundManager {
-    lateinit var context: Context
+    lateinit var mContext: Context
     lateinit var mPlaylist: List<Song>
     var mIndex: Int = 0
 
+    val currentSong = MutableLiveData<Song>()
+    val isPlaying = MutableLiveData<Boolean>()
+
     fun initialize(context: Context) {
-        SoundManager.context = context
+        SoundManager.mContext = context
+        currentSong.value = null
+    }
+
+    private fun broadcastCurrentSong() {
+        currentSong.value = mPlaylist[mIndex]
     }
 
     fun setPlaylist(playlist: List<Song>, index: Int = 0) {
@@ -18,7 +27,8 @@ object SoundManager {
     }
 
     fun play() {
-        ForegroundSoundService.start(context, mPlaylist[mIndex])
+        broadcastCurrentSong()
+        ForegroundSoundService.start(mContext)
     }
 
     fun next() {
@@ -27,15 +37,15 @@ object SoundManager {
     }
 
     fun previous() {
-        mIndex = mIndex - 1 + mPlaylist.size
+        mIndex = (mIndex - 1 + mPlaylist.size) % mPlaylist.size
         play()
     }
 
     fun pauseOrReplay() {
-        ForegroundSoundService.pauseOrReplay(context)
+        ForegroundSoundService.pauseOrReplay(mContext)
     }
 
     fun close() {
-        ForegroundSoundService.stop(context)
+        ForegroundSoundService.stop(mContext)
     }
 }

@@ -5,4 +5,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_item">Mới</string>
+    <string name="scan_music">Quét nhạc</string>
+    <string name="lyrics_title">Lời bài hát</string>
+    <string name="chords_title">Hợp Âm</string>
+    <string name="activity_main_search_title">TÌM KIẾM</string>
+    <string name="save_title">LƯU</string>
+    <string name="replace_title">THAY ĐỔI</string>
+    <string name="on_deivce_title">Trên máy</string>
+    <string name="online_title">Online</string>
 </resources>

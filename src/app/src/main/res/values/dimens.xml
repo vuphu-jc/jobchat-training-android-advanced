@@ -3,7 +3,7 @@
 
     <dimen name="item_song_image_size">65dp</dimen>
     <dimen name="item_song_name_size">30dp</dimen>
-    <dimen name="item_song_name_text_size">20sp</dimen>
+    <dimen name="item_song_name_text_size">16sp</dimen>
     <dimen name="item_song_author_size">25dp</dimen>
     <dimen name="item_song_author_text_size">15sp</dimen>
     <dimen name="item_song_card_corner_radius">3dp</dimen>
@@ -24,7 +24,15 @@
     <dimen name="fragment_play_button_height">35dp</dimen>
 
     <dimen name="expanded_notification_height">140dp</dimen>
-    <dimen name="expanded_notification_icon_size">40dp</dimen>
+    <dimen name="song_detail_icon_size">60dp</dimen>
     <dimen name="expanded_notification_icon_small_size">30dp</dimen>
     <dimen name="notification_name_text_size">18sp</dimen>
+    <dimen name="song_detail_image_size">250dp</dimen>
+    <dimen name="add_view_size">300dp</dimen>
+
+    <dimen name="lyrics_text_size">18sp</dimen>
+    <dimen name="chords_text_size">18sp</dimen>
+    <dimen name="song_detail_icon_small_size">45dp</dimen>
+    <dimen name="floating_action_button_size">50dp</dimen>
+    <dimen name="icon_size">50dp</dimen>
 </resources>

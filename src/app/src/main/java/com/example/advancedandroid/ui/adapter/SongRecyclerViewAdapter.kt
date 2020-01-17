@@ -1,6 +1,7 @@
-package com.example.advancedandroid.ui
+package com.example.advancedandroid.ui.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.advancedandroid.other.ForegroundSoundService
 import com.example.advancedandroid.R
-import com.example.advancedandroid.Utils
 import com.example.advancedandroid.model.Song
 import com.example.advancedandroid.other.SoundManager
+import com.example.advancedandroid.ui.songdetail.SongDetailActivity
+import com.example.advancedandroid.utils.AsyncTaskUtils
 
 class SongRecyclerViewAdapter(private val context: Context, private val data: List<Song>): RecyclerView.Adapter<SongRecyclerViewAdapter.ViewHolder>() {
 
@@ -43,15 +44,17 @@ class SongRecyclerViewAdapter(private val context: Context, private val data: Li
             layout.setOnClickListener {
             }
 
-            Utils.LoadImageFromSong {
+            AsyncTaskUtils.LoadImageFromSong {
                 Glide.with(context).load(it)
                     .error(R.drawable.ic_music_video_gray_24dp)
                     .into(imageImageView)
-            }.execute(song.uri)
+            }.execute(song.localUri)
 
             layout.setOnClickListener {
                 SoundManager.setPlaylist(data, position)
                 SoundManager.play()
+                val intent = Intent(context, SongDetailActivity::class.java)
+                context.startActivity(intent)
             }
         }
     }

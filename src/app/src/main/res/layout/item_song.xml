@@ -64,6 +64,7 @@
             android:src="@drawable/ic_playlist_add_black_24dp"
             style="@style/CircleEffectOnClick" />
 
+
         <Space
             android:id="@+id/bottomSpace"
             android:layout_width="wrap_content"

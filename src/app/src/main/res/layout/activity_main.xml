@@ -16,8 +16,8 @@
             android:id="@+id/playTextView"
             android:layout_width="@dimen/activity_main_text_view_width"
             android:layout_height="@dimen/activity_main_text_view_height"
-            android:drawableLeft="@drawable/ic_play_arrow_black_36dp"
-            android:text="@string/activity_main_play_text_view"
+            android:drawableLeft="@drawable/ic_search_black_24dp"
+            android:text="@string/activity_main_search_title"
             android:textSize="@dimen/activity_main_text_view_text_size"
             android:gravity="center"
             style="@style/EffectOnClick" />
@@ -34,10 +34,12 @@
 
     </LinearLayout>
 
-    <include
-        layout="@layout/fragment_play"
+    <fragment
+        android:id="@+id/playFragment"
+        android:name="com.example.advancedandroid.ui.PlayFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent" ></include>
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout="@layout/fragment_play" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
